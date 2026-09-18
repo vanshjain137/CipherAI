@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "dependencies": {
+    "concurrently": "^10.0.5",
+    "dotenv": "^18.0.0",
+    "ioredis": "^6.0.0"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && npm --prefix gateway install && npm --prefix services/auth install && npm --prefix services/project install && npm --prefix services/file install && npm --prefix services/ai install && npm --prefix services/terminal install && npm --prefix services/payment install",
+    "start": "concurrently -k -p \"[{name}]\" -n \"GATEWAY,AUTH,PROJ,FILE,AI,TERM,PAY\" -c \"cyan,blue,green,magenta,yellow,red,white\" \"npm --prefix gateway start\" \"npm --prefix services/auth start\" \"npm --prefix services/project start\" \"npm --prefix services/file start\" \"npm --prefix services/ai start\" \"npm --prefix services/terminal start\" \"npm --prefix services/payment start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

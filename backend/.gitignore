@@ -1,0 +1,15 @@
+# Environment Variables
+.env
+.env.*
+
+# Secrets
+serviceAccountKey.json
+
+# Dependencies
+node_modules/
+
+# Terminal generated files
+temp_workspace/
+
+# Build files
+dist/
