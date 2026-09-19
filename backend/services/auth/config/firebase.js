@@ -1,4 +1,5 @@
 import admin from 'firebase-admin';
+import { initializeApp, cert } from 'firebase-admin/app';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -22,8 +23,9 @@ else {
   }
 }
 
-const app = admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+// Use the safely imported modular functions
+const app = initializeApp({
+  credential: cert(serviceAccount),
 });
 
 export { app, admin };
