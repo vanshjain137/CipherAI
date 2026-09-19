@@ -22,8 +22,9 @@ else {
   }
 }
 
-admin.initializeApp({
+const app = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
+export { app, admin };
 export default admin;
