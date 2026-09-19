@@ -1,19 +1,21 @@
 # ⚡ CipherAI — Cloud AI IDE & Real-Time Execution Platform
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-cipher--ai--kappa.vercel.app-00dfa2?style=for-the-badge&logo=vercel&logoColor=white)](https://cipher-ai-kappa.vercel.app/)
-[![Backend Status](https://img.shields.io/badge/Render-Online_24%2F7-46e3b7?style=for-the-badge&logo=render&logoColor=white)](https://cipherai-backend.onrender.com/)
-[![React](https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
-[![Node.js](https://img.shields.io/badge/Backend-Node.js_&_Express-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Redis](https://img.shields.io/badge/Cache-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
-[![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
-[![Socket.io](https://img.shields.io/badge/RealTime-Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)](https://socket.io/)
+<p align="left">
+  <a href="https://cipher-ai-kappa.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-cipher--ai--kappa.vercel.app-00dfa2?style=for-the-badge&logo=vercel&logoColor=white" /></a>
+  <a href="https://cipherai-backend.onrender.com/"><img src="https://img.shields.io/badge/Render-Online_24%2F7-46e3b7?style=for-the-badge&logo=render&logoColor=white" /></a>
+  <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react&logoColor=black" /></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/Backend-Node.js_&_Express-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /></a>
+  <a href="https://redis.io/"><img src="https://img.shields.io/badge/Cache-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" /></a>
+  <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" /></a>
+  <a href="https://socket.io/"><img src="https://img.shields.io/badge/RealTime-Socket.io-010101?style=for-the-badge&logo=socketdotio&logoColor=white" /></a>
+</p>
 
 > A full-stack, cloud-hosted AI development environment featuring automated LLM code generation via filesystem tool-calling, bi-directional in-browser shell execution, and a credit-based billing system—architected for 24/7 zero-cost hosting on cloud free tiers.
 
 
 ### 🚀 Live Demo
 
-https://github.com/user-attachments/assets/540ae926-8249-4203-a42b-0940a38928e7
+<video src="https://github.com/user-attachments/assets/540ae926-8249-4203-a42b-0940a38928e7" autoplay loop muted playsinline width="100%"></video>
 
 🎥 **[Watch the full, real-time 47-second execution demo here](https://github.com/user-attachments/assets/2157b5cf-92d3-4939-ac00-cceb179d3aac)**
 
