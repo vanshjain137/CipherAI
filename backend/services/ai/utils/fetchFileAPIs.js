@@ -2,7 +2,7 @@ import axios from "axios"
 import dotenv from "dotenv"
 dotenv.config()
 
-const File_url = process.env.FILE_SERVICE_URL
+const File_url = process.env.FILE_SERVICE
 
 export const createFolder = async ({projectId,parentId,name,userId}) => {
     try {
