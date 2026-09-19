@@ -13,6 +13,7 @@ import { proxyWithHeader } from "./utils/proxyWithHeader.js"
 const port = process.env.PORT || 8000
 
 const app = express()
+app.set("trust proxy", 1)
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true
@@ -20,6 +21,12 @@ app.use(cors({
 
 app.use(cookieParser())
 app.use(morgan("dev"))
+
+app.use((req, res, next) => {
+    console.log(`=== Request to ${req.path} ===`)
+    console.log("Cookies received:", req.cookies)
+    next()
+})
 
 const wsProxy = createProxyMiddleware({
     target: process.env.TERMINAL_SERVICE,
