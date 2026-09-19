@@ -90,6 +90,13 @@ function Terminal({ projectId, userId }) {
         const resizeObserver = new ResizeObserver(resizeTerminal)
         resizeObserver.observe(containerRef.current)
 
+        const handleSyncEvent = () => {
+            if (socket.connected) {
+                socket.emit("terminal:sync")
+            }
+        }
+        window.addEventListener("trigger-terminal-sync", handleSyncEvent)
+
         const focusTerminal = () => {
             terminal.focus()
         }
@@ -109,6 +116,7 @@ function Terminal({ projectId, userId }) {
 
         return () => {
             window?.removeEventListener("resize", resizeTerminal)
+            window?.removeEventListener("trigger-terminal-sync", handleSyncEvent)
             resizeObserver.disconnect()
             containerRef?.current?.removeEventListener("click", focusTerminal)
             input.dispose()
@@ -148,10 +156,10 @@ function Terminal({ projectId, userId }) {
                     title='Clear Terminal'
                     className='rounded p-1 text-zinc-500 transition-colors hover:bg-white/10 hover:text-white'
                 >
-                    <Eraser size={12}/>
+                    <Eraser size={12} />
                 </button>
             </div>
-            <div ref={containerRef} className='min-h-0 flex-1 cursor-text overflow-hidden'/>
+            <div ref={containerRef} className='min-h-0 flex-1 cursor-text overflow-hidden' />
         </div>
     )
 }

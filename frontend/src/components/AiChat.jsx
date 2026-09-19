@@ -176,6 +176,7 @@ function AiChat({ projectId, history = [], reloadTree }) {
         }
         finally{
             setLoading(false)
+            window.dispatchEvent(new Event("trigger-terminal-sync"));
         }
     }
 
