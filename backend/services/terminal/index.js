@@ -183,7 +183,7 @@ io.on("connection", (socket) => {
             )
             if (process.platform !== "win32") {
                 ptyProcess.write(`cd "${root}"\r`);
-                ptyProcess.write(`clear\r`); 
+                ptyProcess.write(`clear\r`);
             }
 
             ptyProcess.onData((data) => {
@@ -229,6 +229,19 @@ io.on("connection", (socket) => {
         cols = normaliseCols(cols)
         rows = normaliseRows(rows)
         session.ptyProcess.resize(cols, rows);
+    })
+
+    socket.on("terminal:sync", async () => {
+        try {
+            const session = sessions.get(socket.id);
+            if (!session) return;
+
+            console.log(`[Terminal] Syncing project files for ${session.projectId}...`);
+            await syncProject(session.projectId, session.userId);
+            console.log(`[Terminal] Sync complete!`);
+        } catch (error) {
+            console.error("[Terminal] Sync failed:", error.message);
+        }
     })
 
     socket.on("disconnect", () => {
