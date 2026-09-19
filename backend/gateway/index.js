@@ -5,6 +5,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import morgan from "morgan"
 import proxy from "express-http-proxy"
+import { createProxyMiddleware } from "http-proxy-middleware"
 import { protect } from "./middleware/protect.js"
 import { getCurrentUser } from "./controllers/user.controller.js"
 import { proxyWithHeader } from "./utils/proxyWithHeader.js"
@@ -20,6 +21,13 @@ app.use(cors({
 app.use(cookieParser())
 app.use(morgan("dev"))
 
+const wsProxy = createProxyMiddleware({
+    target: process.env.TERMINAL_SERVICE,
+    ws: true,
+    changeOrigin: true
+});
+app.use("/socket.io", wsProxy);
+
 app.use("/api/auth", proxy(process.env.AUTH_SERVICE))
 app.use("/api/project",protect,proxyWithHeader(process.env.PROJECT_SERVICE))
 app.use("/api/file",protect,proxyWithHeader(process.env.FILE_SERVICE))
@@ -30,6 +38,8 @@ app.get("/", (req,res)=>{
     res.json({"message":"hello from gateway"})
 })
 
-app.listen(port, ()=>{
+const server = app.listen(port, ()=>{
     console.log(`gateway started at ${port}`)
 })
+
+server.on('upgrade', wsProxy.upgrade);
