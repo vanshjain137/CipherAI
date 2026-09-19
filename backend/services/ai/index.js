@@ -5,7 +5,7 @@ import router from "./routes/ai.routes.js"
 
 dotenv.config()
 
-const port = process.env.PORT || 8004
+const port = 8004
 
 const app = express()
 app.use(express.json())

@@ -5,7 +5,7 @@ import { connectDb } from "./config/db.js"
 import router from "./routes/project.route.js"
 
 
-const port = process.env.PORT || 8002
+const port = 8002
 
 const app = express()
 app.use(express.json())

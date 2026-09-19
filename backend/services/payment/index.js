@@ -4,7 +4,7 @@ import { connectDb } from "./config/db.js"
 import router from "./routes/payment.route.js"
 dotenv.config()
 
-const port = process.env.PORT || 8006
+const port = 8006
 
 const app = express()
 app.use(express.json())

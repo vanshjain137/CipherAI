@@ -10,7 +10,7 @@ import pty from "node-pty"
 
 dotenv.config()
 
-const port = process.env.PORT || 8005
+const port = 8005
 
 const app = express()
 app.use(express.json())
