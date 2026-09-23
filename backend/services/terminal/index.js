@@ -186,8 +186,22 @@ io.on("connection", (socket) => {
                 ptyProcess.write(`clear\r`);
             }
 
+            let outputBuffer = "";
+            let debounceTimeout = null;
+
             ptyProcess.onData((data) => {
-                send(socket, data)
+                outputBuffer += data;
+
+                if (!debounceTimeout) {
+                    debounceTimeout = setTimeout(() => {
+                        const chunk = outputBuffer.slice(0, 50000); 
+                        
+                        send(socket, chunk);
+                        
+                        outputBuffer = outputBuffer.slice(50000);
+                        debounceTimeout = null;
+                    }, 15);
+                }
             })
 
             ptyProcess.onExit(({ exitCode }) => {
