@@ -11,7 +11,8 @@
   "main": "index.js",
   "scripts": {
     "install-all": "npm install && npm --prefix gateway install && npm --prefix services/auth install && npm --prefix services/project install && npm --prefix services/file install && npm --prefix services/ai install && npm --prefix services/terminal install && npm --prefix services/payment install",
-    "start": "concurrently -k -p \"[{name}]\" -n \"GATEWAY,AUTH,PROJ,FILE,AI,TERM,PAY\" -c \"cyan,blue,green,magenta,yellow,red,white\" \"npm --prefix gateway start\" \"npm --prefix services/auth start\" \"npm --prefix services/project start\" \"npm --prefix services/file start\" \"npm --prefix services/ai start\" \"npm --prefix services/terminal start\" \"npm --prefix services/payment start\""
+    "start": "node --max-old-space-size=40 gateway/index.js & node --max-old-space-size=35 services/auth/index.js & node --max-old-space-size=35 services/project/index.js & node --max-old-space-size=35 services/file/index.js & node --max-old-space-size=95 services/ai/index.js & node --max-old-space-size=45 services/terminal/index.js & node --max-old-space-size=35 services/payment/index.js & wait",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"GATEWAY,AUTH,PROJ,FILE,AI,TERM,PAY\" -c \"cyan,blue,green,magenta,yellow,red,white\" \"npm --prefix gateway dev\" \"npm --prefix services/auth dev\" \"npm --prefix services/project dev\" \"npm --prefix services/file dev\" \"npm --prefix services/ai dev\" \"npm --prefix services/terminal dev\" \"npm --prefix services/payment dev\""
   },
   "keywords": [],
   "author": "",
