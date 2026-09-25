@@ -195,7 +195,7 @@ io.on("connection", (socket) => {
             )
             if (process.platform !== "win32") {
                 ptyProcess.write(`cd "${root}"\r`);
-                ptyProcess.write(`alias npm="pnpm"\r`);
+                ptyProcess.write(`alias npm="npx --yes pnpm"\r`);
                 ptyProcess.write(`clear\r`);
             }
 
