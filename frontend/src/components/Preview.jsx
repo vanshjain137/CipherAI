@@ -2,7 +2,14 @@ import React, { useMemo } from 'react'
 
 function Preview({ tree }) {
 
+  const isViteProject = useMemo(() => {
+     return tree.some(item => item.name === "package.json") || 
+            tree.some(folder => folder.children?.some(file => file.name === "package.json"));
+  }, [tree]);
+
   const srcDoc = useMemo(() => {
+    if (isViteProject) return null;
+
     let html = ""
     let css = ""
     let js = ""
@@ -12,7 +19,7 @@ function Preview({ tree }) {
         if (item.type == "file") {
           if (item.name == "index.html") html = item.content || ""
           if (item.name.endsWith("css")) css = item.content || ""
-          if (item.name.endsWith("js")) js = item.content || ""
+          if (item.name.endsWith("js") && !item.name.endsWith("jsx")) js = item.content || ""
         }
         if(item.children?.length)walk(item.children)
       }
@@ -54,7 +61,7 @@ function Preview({ tree }) {
 
     return html;
 
-  }, [tree])
+  }, [tree, isViteProject])
 
 
   return (
@@ -64,18 +71,25 @@ function Preview({ tree }) {
           <div className='h-2 w-2 rounded-full bg-emerald-400'/>
           <span className='text-xs text-zinc-300'>Preview</span>
         </div>
-        </div>
+      </div>
 
-        <div className='min-h-0 flex-1 bg-white'>
-          <iframe
-          title='Project Preview'
-          srcDoc={srcDoc}
-          sandbox='allow-scripts allow-forms allow-modals'
-          className='h-full w-full border-0'
-          />
-        </div>
-
-      
+      <div className='min-h-0 flex-1 bg-white'>
+        {isViteProject ? (
+            <div className="flex h-full items-center justify-center bg-[#0a0a0c] text-center text-zinc-400">
+                <div>
+                   <h3 className="mb-2 text-lg text-white">React / Vite Server Running</h3>
+                   <p className="text-sm">Please view the Terminal panel to interact with the Vite dev server output.</p>
+                </div>
+            </div>
+        ) : (
+            <iframe
+            title='Project Preview'
+            srcDoc={srcDoc}
+            sandbox='allow-scripts allow-forms allow-modals'
+            className='h-full w-full border-0'
+            />
+        )}
+      </div>
     </div>
   )
 }
