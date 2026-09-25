@@ -160,12 +160,24 @@ io.on("connection", (socket) => {
 
             const { root } = await syncProject(projectId, userId)
 
-            const minimalEnv = process.platform === "win32" ? process.env : {
+            const minimalEnv = process.platform === "win32" ? { 
+                ...process.env,
+                NODE_OPTIONS: "--max-old-space-size=120",
+                npm_config_audit: "false",
+                npm_config_fund: "false",
+                npm_config_progress: "false",
+                npm_config_maxsockets: "2"
+            } : {
                 PATH: process.env.PATH || "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin",
                 HOME: process.env.HOME || "/",
                 USER: process.env.USER || "user",
                 FORCE_COLOR: "1",
-                TERM: "xterm-256color"
+                TERM: "xterm-256color",
+                NODE_OPTIONS: "--max-old-space-size=120",
+                npm_config_audit: "false",
+                npm_config_fund: "false",
+                npm_config_progress: "false",
+                npm_config_maxsockets: "2"
             };
 
             const safeShell = process.platform === "win32" ? "powershell.exe" : "/bin/bash";
