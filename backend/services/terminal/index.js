@@ -195,7 +195,7 @@ io.on("connection", (socket) => {
             )
             if (process.platform !== "win32") {
                 ptyProcess.write(`cd "${root}"\r`);
-                ptyProcess.write(`alias npm="npx --yes pnpm --network-concurrency 1 --child-concurrency 1"\r`);
+                ptyProcess.write(`alias npm="npx --yes bun"\r`);
                 ptyProcess.write(`clear\r`);
             }
 
