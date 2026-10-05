@@ -197,5 +197,7 @@ npm start
 ## 👤 Author
 
 **Vansh Jain**
-- **Portfolio / Live Demo:** [cipher-ai-kappa.vercel.app](https://cipher-ai-kappa.vercel.app/)
+- **LinkedIn:** [linkedin.com/in/vanshjain137](https://www.linkedin.com/in/vanshjain137)
 - **GitHub:** [@vanshjain137](https://github.com/vanshjain137)
+- **Live Demo:** [cipher-ai-kappa.vercel.app](https://cipher-ai-kappa.vercel.app/)
+- **Portfolio:** [https://vansh-os-three.vercel.app/](https://vansh-os-three.vercel.app/)
